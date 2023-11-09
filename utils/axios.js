@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customAxios = axios.create({
-  baseURL: "http://localhost:3000/api",
+  baseURL: "https://old-sound-9762.fly.dev/api",
 
   headers: {
     "Content-Type": "application/json",

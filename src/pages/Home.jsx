@@ -1,4 +1,3 @@
-import "../app.css";
 import customAxios from "../../utils/axios";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -7,7 +6,6 @@ const Home = () => {
   const [teams, setTeams] = useState([]);
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
-  //   const [chooseTeam, setChooseTeam] = useState(null);
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -42,7 +40,7 @@ const Home = () => {
   const handleStartLeage = async (e) => {
     e.preventDefault();
     try {
-      const res = await customAxios.get("/start");
+      await customAxios.get("/start");
       setMessage("Games on");
       setTimeout(() => {
         setMessage("");

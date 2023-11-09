@@ -3,7 +3,6 @@ import logo from "../assets/logo 1 simple png.png";
 import customAxios from "../../utils/axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { FaCheckCircle } from "react-icons/fa";
 
 const Games = () => {
   const [games, setGames] = useState([]);

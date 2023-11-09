@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const customAxios = axios.create({
-  baseURL: "https://patient-grass-8418.fly.dev/api",
+  baseURL: "https://long-sun-5530.fly.dev/api",
 
   headers: {
     "Content-Type": "application/json",

@@ -41,10 +41,16 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <div className="w-8 aspect-square">
-          <img src={logo} alt="log" className="w-full h-full object-contain" />
-        </div>
-        <a className="btn btn-ghost normal-case text-xl">Ac Gaming</a>
+        <Link to="/" className="flex  justify-center items-center ">
+          <div className="w-12 relative aspect-square">
+            <img
+              src={logo}
+              alt="log"
+              className="absolute  w-full h-full object-contain"
+            />
+          </div>
+          <a className=" normal-case font-semibold text-xl">Ac Gaming</a>
+        </Link>
       </div>
       <div className="navbar-end">
         <button className="btn btn-ghost btn-circle">

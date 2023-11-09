@@ -2,9 +2,11 @@ import logo from "../assets/logo 1 simple png.png";
 import customAxios from "../../utils/axios";
 import { useState } from "react";
 import { useEffect } from "react";
+import { CiCircleRemove } from "react-icons/ci";
 
 const Games = () => {
   const [games, setGames] = useState([]);
+  const [pass, setPass] = useState("");
   const [results, setResults] = useState({
     homeTeam: "",
     awayTeam: "",
@@ -36,10 +38,16 @@ const Games = () => {
         awayTeamGoals: results.awayTeam,
       };
       const res = await customAxios.put(`/update-match/${matchId}`, {
+        pass,
         result: updatedResult,
       });
       if (res.status === 200) {
         setMessage("GG");
+        setResults({
+          homeTeam: "",
+          awayTeam: "",
+        });
+        setPass("");
         fetchMatches();
         setTimeout(() => {
           setMessage("");
@@ -98,7 +106,7 @@ const Games = () => {
                       }
                       className="btn btn-xs btn-outline btn-primary mt-2 hover:animate-pulse cursor-pointer"
                     >
-                      لعب
+                      انتهت
                     </span>
 
                     <dialog id={`my_modal_${game._id}`} className="modal">
@@ -119,7 +127,7 @@ const Games = () => {
                             type="number"
                             min={0}
                             max={20}
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs p-0 text-center"
                             name="homeTeam"
                             value={results.homeTeam}
                             onChange={handleResults}
@@ -129,7 +137,7 @@ const Games = () => {
                             type="number"
                             min={0}
                             max={20}
-                            className="input input-bordered w-full max-w-xs"
+                            className="input input-bordered w-full max-w-xs p-0 text-center"
                             name="awayTeam"
                             value={results.awayTeam}
                             onChange={handleResults}
@@ -147,12 +155,24 @@ const Games = () => {
                           </div>
                         </div>
                         <div className="modal-action">
-                          <form
-                            method="dialog"
-                            className="w-full flex justify-center"
-                          >
-                            {/* if there is a button in form, it will close the modal */}
+                          <form method="dialog" className="absolute top-4">
+                            <button>
+                              <CiCircleRemove className="text-3xl font-bold" />
+                            </button>
+                          </form>
+                          <label className="absolute left-4 bottom-7">
+                            #
+                            <input
+                              type="password"
+                              name="pass"
+                              onChange={(e) => setPass(e.target.value)}
+                              value={pass}
+                              className=" input input-bordered px-3 w-24 h-6 p-0 ml-1"
+                            />
+                          </label>
+                          <form className="w-full flex justify-center">
                             <button
+                              type="button"
                               onClick={() => handleUpdateMatch(game._id)}
                               className="btn btn-sm btn-primary"
                             >

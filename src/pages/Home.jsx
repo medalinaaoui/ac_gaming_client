@@ -2,14 +2,12 @@ import "../app.css";
 import customAxios from "../../utils/axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [teams, setTeams] = useState([]);
   const [form, setForm] = useState({});
   const [message, setMessage] = useState("");
   //   const [chooseTeam, setChooseTeam] = useState(null);
-  const navigate = useNavigate();
   const handleChange = (e) => {
     setForm({
       ...form,
@@ -24,11 +22,17 @@ const Home = () => {
     try {
       const res = await customAxios.get("/matches");
       if (res.status === 200) {
-        navigate("/games");
+        setMessage("المبريات متاحة");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
       }
     } catch (error) {
       if (error.response.data.available) {
-        navigate("/games");
+        setMessage("");
+        setTimeout(() => {
+          setMessage("");
+        }, 2000);
       } else {
         fetchTeams();
       }
@@ -42,7 +46,6 @@ const Home = () => {
       setMessage("Games on");
       setTimeout(() => {
         setMessage("");
-        navigate("/games");
       }, 2000);
     } catch (error) {
       setMessage(error.response.data.message);
@@ -79,9 +82,9 @@ const Home = () => {
     fetchMatches();
   }, []);
   return (
-    <div className=" px-24 sm:px-0">
-      <div className="login-box">
-        <h2>دوري الأبطال</h2>
+    <div className="px-24 sm:px-0">
+      <div className="login-box sm:p-10 p-4 w-[90%] sm:w-[400px]">
+        <h2>Ac Gaming League</h2>
         <form>
           <div className="user-box">
             <input type="text" onChange={handleChange} name="name" />

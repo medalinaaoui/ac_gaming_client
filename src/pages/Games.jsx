@@ -71,7 +71,7 @@ const Games = () => {
               <div key={game._id} className="match-content">
                 <div className="column sm:p-8 p-4">
                   <div className="team team--home">
-                    <div className="team-logo">
+                    <div className=" w-8 sm:w-12 h-8 sm:h-12">
                       <img src={game?.homeTeam.team.crest} />
                     </div>
                     <h2 className="team-name font-semibold sm:text-2xl">
@@ -79,19 +79,18 @@ const Games = () => {
                     </h2>
                   </div>
                 </div>
-                <div className="column sm:p-8 p-4">
+                <div className="column ">
                   <div className="match-details">
                     <div className="flex gap-2">
-                      <div className="match-date">{game.day} :يوم</div>
-                      <div className="match-date">
+                      <div className="text-sm sm:text-base font-semibold">
+                        {game.day} :يوم
+                      </div>
+                      <div className="font-semibold text-sm sm:text-base">
                         {game.time.slice(0, 1)} :ساعة
                       </div>
                     </div>
-                    <div className="match-score">
-                      <span className=" text-3xl">-</span>
-                    </div>
 
-                    <div className="match-referee">الحكم: حمزة</div>
+                    <div className="match-referee text-xs">الحكم: حمزة</div>
 
                     <span
                       onClick={() =>
@@ -99,9 +98,9 @@ const Games = () => {
                           .getElementById(`my_modal_${game._id}`)
                           .showModal()
                       }
-                      className="text-2xl font-bold hover:animate-pulse cursor-pointer mt-4 text-blue-500"
+                      className="btn btn-xs btn-outline btn-primary mt-2 hover:animate-pulse cursor-pointer"
                     >
-                      <FaCheckCircle />
+                      لعب
                     </span>
 
                     <dialog id={`my_modal_${game._id}`} className="modal">
@@ -109,7 +108,7 @@ const Games = () => {
                         <div className="flex justify-between items-center">
                           <div className="column sm:p-8 p-4">
                             <div className="team team--home">
-                              <div className="team-logo">
+                              <div className=" w-8 sm:w-12 h-8 sm:h-12">
                                 <img src={game?.homeTeam.team.crest} />
                               </div>
                               <h2 className=" w-24 truncate text-center font-semibold sm:text-2xl">
@@ -140,7 +139,7 @@ const Games = () => {
 
                           <div className="column sm:p-8 p-4">
                             <div className="team team--away">
-                              <div className="team-logo">
+                              <div className=" w-8 sm:w-12 h-8 sm:h-12">
                                 <img src={game?.awayTeam.team.crest} />
                               </div>
                               <h2 className=" w-24 truncate text-center font-semibold sm:text-2xl">
@@ -169,7 +168,7 @@ const Games = () => {
                 </div>
                 <div className="column sm:p-8 p-4">
                   <div className="team team--away">
-                    <div className="team-logo">
+                    <div className=" w-8 sm:w-12 h-8 sm:h-12">
                       <img src={game?.awayTeam.team.crest} />
                     </div>
                     <h2 className="team-name font-semibold sm:text-2xl">

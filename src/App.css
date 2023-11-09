@@ -2,8 +2,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 400px;
-  padding: 40px;
+
   transform: translate(-50%, -50%);
   background: rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
@@ -84,7 +83,7 @@
   left: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, transparent, #03e9f4);
+  background: linear-gradient(90deg, transparent, #be132d);
   animation: btn-anim1 1s linear infinite;
 }
 
@@ -103,7 +102,7 @@
   right: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(180deg, transparent, #03e9f4);
+  background: linear-gradient(180deg, transparent, #be132d);
   animation: btn-anim2 1s linear infinite;
   animation-delay: 0.25s;
 }
@@ -123,7 +122,7 @@
   right: -100%;
   width: 100%;
   height: 2px;
-  background: linear-gradient(270deg, transparent, #03e9f4);
+  background: linear-gradient(270deg, transparent, #be132d);
   animation: btn-anim3 1s linear infinite;
   animation-delay: 0.5s;
 }
@@ -143,7 +142,7 @@
   left: 0;
   width: 2px;
   height: 100%;
-  background: linear-gradient(360deg, transparent, #03e9f4);
+  background: linear-gradient(360deg, transparent, #be132d);
   animation: btn-anim4 1s linear infinite;
   animation-delay: 0.75s;
 }
@@ -274,7 +273,15 @@
   background-color: var(--color-bg-primary);
 }
 .team-logo img {
-  width: 50px;
+  width: 2rem;
+  height: 2rem;
+}
+@media (min-width: 640px) {
+  .sm\:w-12,
+  .sm\:h-12 {
+    width: 3rem; /* You can adjust the size as needed */
+    height: 3rem; /* You can adjust the size as needed */
+  }
 }
 .team-name {
   text-align: center;

@@ -28,10 +28,12 @@ const Standings = () => {
         {/* head */}
         <thead>
           <tr>
-            <th>الترتيب</th>
+            <th>#</th>
             <th>الإسم</th>
             <th>لعب</th>
             <th>النقط</th>
+            <th>فوز</th>
+            <th className="sm:block hidden">تعادل</th>
           </tr>
         </thead>
         <tbody>
@@ -44,24 +46,24 @@ const Standings = () => {
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
-                      <div className="mask mask-squircle w-12 h-12">
+                      <div className="mask mask-squircle w-8 sm:w-12 h-8 sm:h-12">
                         <img src={user.teamFlag} alt="main user picture" />
                       </div>
                     </div>
                     <div>
-                      <div className="font-bold">anchof</div>
-                      <div className="text-sm opacity-50">anchof</div>
+                      <div className="font-bold sm:text-base text-sm">
+                        {user.user}
+                      </div>
+                      <div className="text-sm opacity-50 hidden sm:block ">
+                        {user.team}
+                      </div>
                     </div>
                   </div>
                 </td>
-                <td>
-                  {user.gamesPlayed}
-                  <br />
-                  <span className="badge badge-ghost badge-sm">achnof 2</span>
-                </td>
+                <td>{user.gamesPlayed}</td>
                 <td>{user.points}</td>
-                <td>{user.rank}</td>
-                <td>anchof</td>
+                <td>{user.wins}</td>
+                <td className="sm:block hidden">{user.draws}</td>
               </tr>
             ))
           ) : (

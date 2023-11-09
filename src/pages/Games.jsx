@@ -1,4 +1,3 @@
-import "../app.css";
 import logo from "../assets/logo 1 simple png.png";
 import customAxios from "../../utils/axios";
 import { useState } from "react";

@@ -253,7 +253,6 @@
   position: relative;
 }
 .column {
-  padding: 32px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -265,24 +264,21 @@
   align-items: center;
 }
 .team-logo {
-  width: 100px;
-  height: 100px;
+  width: -moz-fit-content;
+  width: fit-content;
+  aspect-ratio: 1/1;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 50%;
   background-color: var(--color-bg-primary);
-  box-shadow: 0 4px 4px 0 rgba(48, 48, 48, 0.15),
-    0 0 0 15px var(--color-bg-secondary);
 }
 .team-logo img {
   width: 50px;
 }
 .team-name {
   text-align: center;
-  margin-top: 24px;
-  font-size: 20px;
-  font-weight: 600;
+  margin-top: 0.5rem;
 }
 .match-details {
   display: flex;
@@ -299,18 +295,10 @@
   color: var(--color-text-primary);
 }
 .match-score {
-  margin-top: 12px;
   display: flex;
   align-items: center;
 }
-.match-score-number {
-  font-size: 48px;
-  font-weight: 600;
-  line-height: 1;
-}
-.match-score-number--leading {
-  color: var(--color-theme-primary);
-}
+
 .match-score-divider {
   font-size: 28px;
   font-weight: 700;
@@ -324,9 +312,6 @@
   font-size: 14px;
   font-weight: 600;
   margin-top: 8px;
-}
-.match-referee {
-  margin-top: 12px;
 }
 
 .container {

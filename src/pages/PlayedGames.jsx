@@ -22,9 +22,10 @@ const Games = () => {
 
   const fetchMatches = async () => {
     try {
-      const res = await customAxios.get("/matches-with-team-infos");
+      const res = await customAxios.get("/plyed-matches-with-team-infos");
       if (res.status === 200) {
         setGames(res.data);
+        console.log(res.data);
       }
     } catch (error) {
       console.log("🚀 ~ file: Games.jsx:18 ~ fetchMatches ~ error:", error);
@@ -68,7 +69,7 @@ const Games = () => {
           </div>
           <div className="grid gap-4  divide-red-950 divide-y">
             {games?.map((game) => (
-              <div key={game._id} className="match-content">
+              <div key={game._id} className="match-content ">
                 <div className="column sm:p-8 p-4">
                   <div className="team team--home">
                     <div className="team-logo">
@@ -78,6 +79,9 @@ const Games = () => {
                       {game?.homeTeam.name}
                     </h2>
                   </div>
+                </div>
+                <div className="text-3xl sm:text-4xl text-red-700 font-extrabold">
+                  {game?.result?.homeTeamGoals}
                 </div>
                 <div className="column sm:p-8 p-4">
                   <div className="match-details">
@@ -167,6 +171,10 @@ const Games = () => {
                     </dialog>
                   </div>
                 </div>
+                <div className="text-3xl sm:text-4xl text-red-700 font-extrabold">
+                  {game?.result?.awayTeamGoals}
+                </div>
+
                 <div className="column sm:p-8 p-4">
                   <div className="team team--away">
                     <div className="team-logo">

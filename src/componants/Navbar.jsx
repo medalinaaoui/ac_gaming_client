@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../assets/logo 1 simple png.png";
 const Navbar = () => {
   return (
     <div className="navbar bg-[#1D0E0E]">
@@ -28,7 +29,10 @@ const Navbar = () => {
               <Link to="/">الرئيسية</Link>
             </li>
             <li>
-              <Link to="/games">المبريات</Link>
+              <Link to="/games">المباريات القادمة</Link>
+            </li>
+            <li>
+              <Link to="/played_games">المباريات الفائته</Link>
             </li>
             <li>
               <Link to="/standings">الترتيب</Link>
@@ -37,6 +41,9 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
+        <div className="w-8 aspect-square">
+          <img src={logo} alt="log" className="w-full h-full object-contain" />
+        </div>
         <a className="btn btn-ghost normal-case text-xl">Ac Gaming</a>
       </div>
       <div className="navbar-end">

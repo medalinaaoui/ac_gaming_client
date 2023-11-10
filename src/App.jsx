@@ -16,7 +16,7 @@ const App = () => {
       element: (
         <Suspense
           fallback={
-            <div className="w-screen h-screen">
+            <div className="w-full h-screen">
               <span className="loader"></span>
             </div>
           }

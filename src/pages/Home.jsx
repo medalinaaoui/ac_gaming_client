@@ -21,7 +21,7 @@ const Home = () => {
     try {
       const res = await customAxios.get("/matches");
       if (res.status === 200) {
-        setMessage("المبريات متاحة");
+        setMessage("المباريات متاحة");
         setTimeout(() => {
           setMessage("");
         }, 2000);

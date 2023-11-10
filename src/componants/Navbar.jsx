@@ -41,15 +41,17 @@ const Navbar = () => {
         </div>
       </div>
       <div className="navbar-center">
-        <Link to="/" className="flex  justify-center items-center ">
+        <Link to="/" className="flex pr-2 mr-6 justify-center items-center ">
           <div className="w-12 relative aspect-square">
             <img
               src={logo}
               alt="log"
-              className="absolute  w-full h-full object-contain"
+              className="absolute left-2 w-full h-full object-contain"
             />
           </div>
-          <a className=" normal-case font-semibold text-xl">Ac Gaming</a>
+          <a className=" normal-case font-bold sm:font-semibold text-base sm:text-xl">
+            Ac Gaming
+          </a>
         </Link>
       </div>
       <div className="navbar-end">

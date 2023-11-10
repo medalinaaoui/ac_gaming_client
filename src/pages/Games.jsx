@@ -8,6 +8,7 @@ const Games = () => {
   const [games, setGames] = useState([]);
   const [pass, setPass] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
   const [results, setResults] = useState({
     homeTeam: "",
     awayTeam: "",
@@ -36,29 +37,36 @@ const Games = () => {
   };
 
   const handleUpdateMatch = async (matchId) => {
-    try {
-      const updatedResult = {
-        homeTeamGoals: results.homeTeam,
-        awayTeamGoals: results.awayTeam,
-      };
-      const res = await customAxios.put(`/update-match/${matchId}`, {
-        pass,
-        result: updatedResult,
-      });
-      if (res.status === 200) {
-        setMessage("GG");
-        setResults({
-          homeTeam: "",
-          awayTeam: "",
+    if (!results.homeTeam || !results.awayTeam || !pass) {
+      setMessage("املأ المعلومات");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } else {
+      try {
+        const updatedResult = {
+          homeTeamGoals: results.homeTeam,
+          awayTeamGoals: results.awayTeam,
+        };
+        const res = await customAxios.put(`/update-match/${matchId}`, {
+          pass,
+          result: updatedResult,
         });
-        setPass("");
-        fetchMatches();
-        setTimeout(() => {
-          setMessage("");
-        }, 3000);
+        if (res.status === 200) {
+          setMessage("GG");
+          setResults({
+            homeTeam: "",
+            awayTeam: "",
+          });
+          setPass("");
+          fetchMatches();
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
-    } catch (error) {
-      console.error("Error:", error);
     }
   };
 
@@ -68,7 +76,7 @@ const Games = () => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="container">
+      <div className="container min-h-screen flex items-start">
         <div className="match">
           <div className="match-header">
             <div className="match-tournament">

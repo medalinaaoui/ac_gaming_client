@@ -2,7 +2,6 @@ import logo from "../assets/logo 1 simple png.png";
 import customAxios from "../../utils/axios";
 import { useState } from "react";
 import { useEffect } from "react";
-import { FaEdit } from "react-icons/fa";
 import { CiCircleRemove } from "react-icons/ci";
 
 const Games = () => {
@@ -10,8 +9,8 @@ const Games = () => {
   const [results, setResults] = useState({
     homeTeam: "",
     awayTeam: "",
-    pass: "",
   });
+  const [pass, setPass] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,29 +36,36 @@ const Games = () => {
   };
 
   const handleUpdateMatch = async (matchId) => {
-    try {
-      const updatedResult = {
-        homeTeamGoals: results.homeTeam,
-        awayTeamGoals: results.awayTeam,
-        pass: results.pass,
-      };
-      const res = await customAxios.put(`/update-match/${matchId}`, {
-        result: updatedResult,
-      });
-      if (res.status === 200) {
-        setMessage("GG");
-        setResults({
-          homeTeam: "",
-          awayTeam: "",
-          pass: "",
+    if (!results.homeTeam || !results.awayTeam || !pass) {
+      setMessage("املأ المعلومات");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } else {
+      try {
+        const updatedResult = {
+          homeTeamGoals: results.homeTeam,
+          awayTeamGoals: results.awayTeam,
+        };
+        const res = await customAxios.put(`/update-match/${matchId}`, {
+          pass,
+          result: updatedResult,
         });
-        fetchMatches();
-        setTimeout(() => {
-          setMessage("");
-        }, 3000);
+        if (res.status === 200) {
+          setMessage("GG");
+          setResults({
+            homeTeam: "",
+            awayTeam: "",
+          });
+          setPass("");
+          fetchMatches();
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
+        }
+      } catch (error) {
+        console.error("Error:", error);
       }
-    } catch (error) {
-      console.error("Error:", error);
     }
   };
 
@@ -69,7 +75,7 @@ const Games = () => {
 
   return (
     <div className="w-full flex justify-center">
-      <div className="container">
+      <div className="container min-h-screen flex items-start">
         <div className="match">
           <div className="match-header">
             <div className="match-tournament">
@@ -86,7 +92,7 @@ const Games = () => {
               <span>لا توجد مبريات</span>
             </div>
           ) : (
-            <div className="grid gap-4  divide-red-950 divide-y">
+            <div className="grid gap-4 divide-red-950 divide-y">
               {games?.map((game) => (
                 <div key={game._id} className="match-content items-center ">
                   <div className="column sm:p-8 p-4">
@@ -116,9 +122,9 @@ const Games = () => {
                             .getElementById(`my_modal_${game._id}`)
                             .showModal()
                         }
-                        className="text-2xl font-bold hover:animate-pulse cursor-pointer mt-2 sm:mt-4 text-blue-500"
+                        className="btn btn-xs btn-outline btn-primary mt-2 hover:animate-pulse cursor-pointer"
                       >
-                        <FaEdit />
+                        تعديل
                       </span>
 
                       <dialog id={`my_modal_${game._id}`} className="modal">
@@ -177,8 +183,8 @@ const Games = () => {
                               <input
                                 type="password"
                                 name="pass"
-                                onChange={handleResults}
-                                value={results.pass}
+                                onChange={(e) => setPass(e.target.value)}
+                                value={pass}
                                 className=" input input-bordered px-3 w-24 h-6 p-0 ml-1"
                               />
                             </label>

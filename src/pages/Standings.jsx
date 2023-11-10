@@ -38,7 +38,9 @@ const Standings = () => {
         </thead>
         <tbody>
           {isLoading ? (
-            "loading..."
+            <div className="w-screen h-screen flex justify-center items-center">
+              <span className="loader"></span>
+            </div>
           ) : standings?.length > 0 ? (
             standings?.map((user) => (
               <tr key={user._id}>

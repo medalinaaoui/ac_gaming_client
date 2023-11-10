@@ -5,6 +5,7 @@ import { useEffect } from "react";
 const Home = () => {
   const [teams, setTeams] = useState([]);
   const [form, setForm] = useState({});
+  const NAMEREGEX = /^(?=.*[a-zA-Z])[^\s]{1,10}$/;
   const [message, setMessage] = useState("");
   const handleChange = (e) => {
     setForm({
@@ -55,25 +56,33 @@ const Home = () => {
   const handleGo = async (e) => {
     e.preventDefault();
     if (!Object.values(form).every((v) => v)) {
-      setMessage("أملء المعلومات");
+      setMessage("املأ المعلومات");
 
       setTimeout(() => {
         setMessage("");
       }, 3000);
     }
-    try {
-      const req = await customAxios.post("/join/league", form);
-      if (req.status === 201) {
-        setMessage(req.data.message);
+    if (!NAMEREGEX.test(form.name)) {
+      setMessage("أدخل إسم مناسب");
+
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } else {
+      try {
+        const req = await customAxios.post("/join/league", form);
+        if (req.status === 201) {
+          setMessage(req.data.message);
+          setTimeout(() => {
+            setMessage("");
+          }, 3000);
+        }
+      } catch (error) {
+        setMessage(error.response.data.error);
         setTimeout(() => {
           setMessage("");
         }, 3000);
       }
-    } catch (error) {
-      setMessage(error.response.data.error);
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
     }
   };
   useEffect(() => {

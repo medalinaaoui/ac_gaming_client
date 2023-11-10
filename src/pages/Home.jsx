@@ -89,7 +89,7 @@ const Home = () => {
     fetchMatches();
   }, []);
   return (
-    <div className="px-24 sm:px-0">
+    <div className="px-24 sm:px-0 min-h-screen">
       <div className="login-box sm:p-10 p-4 w-[90%] sm:w-[400px]">
         <h2>Ac Gaming League</h2>
         <form>

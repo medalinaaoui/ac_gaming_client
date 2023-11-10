@@ -1,7 +1,7 @@
 import { FaGithub, FaInstagram } from "react-icons/fa";
 const Footer = () => {
   return (
-    <footer className="h-16 mt-16 gap-2 bg-[#120a0a] w-full flex justify-center items-center">
+    <footer className="h-16 mt-6 gap-2 bg-[#120a0a] w-full flex justify-center items-center">
       <span className=" cursor-pointer">
         <a
           target="_blank"

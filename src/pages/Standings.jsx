@@ -69,7 +69,9 @@ const Standings = () => {
               </tr>
             ))
           ) : (
-            <p>You didn&rsquo;t include any vehicle yet</p>
+            <div className="w-screen">
+              <p className="text-center">لم تبدأ البطولة بعد</p>
+            </div>
           )}
         </tbody>
       </table>

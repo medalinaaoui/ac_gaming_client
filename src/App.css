@@ -373,3 +373,7 @@
     clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%);
   }
 }
+
+.article-con {
+  background: rgba(0, 0, 0, 0.5);
+}

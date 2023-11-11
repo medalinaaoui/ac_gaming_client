@@ -29,13 +29,16 @@ const Navbar = () => {
               <Link to="/">الرئيسية</Link>
             </li>
             <li>
+              <Link to="/standings">الترتيب</Link>
+            </li>
+            <li>
               <Link to="/games">المباريات القادمة</Link>
             </li>
             <li>
               <Link to="/played_games">المباريات الفائته</Link>
             </li>
             <li>
-              <Link to="/standings">الترتيب</Link>
+              <Link to="/join">إنضم لنا</Link>
             </li>
           </ul>
         </div>

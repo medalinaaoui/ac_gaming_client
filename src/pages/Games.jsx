@@ -90,7 +90,7 @@ const Games = () => {
             </div>
           ) : games.length === 0 ? (
             <div className="w-full h-screen flex justify-center items-center">
-              <span>لا توجد مبريات</span>
+              <span>لا توجد مباريات</span>
             </div>
           ) : (
             <div className="grid gap-4  divide-red-950 divide-y">
@@ -116,8 +116,6 @@ const Games = () => {
                           {game.time.slice(0, 1)} :ساعة
                         </div>
                       </div>
-
-                      <div className="match-referee text-xs">الحكم: حمزة</div>
 
                       <span
                         onClick={() =>

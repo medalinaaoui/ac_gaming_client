@@ -6,6 +6,7 @@ const Home = lazy(() => import("./pages/Home"));
 const Games = lazy(() => import("./pages/Games.jsx"));
 const PlayedGames = lazy(() => import("./pages/PlayedGames.jsx"));
 const Standings = lazy(() => import("./pages/Standings.jsx"));
+const Competition = lazy(() => import("./pages/Competition.jsx"));
 const Front = lazy(() => import("./pages/Front.jsx"));
 import Navbar from "./componants/Navbar";
 import Footer from "./componants/Footer";
@@ -88,6 +89,22 @@ const App = () => {
         >
           <Navbar />
           <Standings />
+          <Footer />
+        </Suspense>
+      ),
+    },
+    {
+      path: "/competition",
+      element: (
+        <Suspense
+          fallback={
+            <div className="w-full h-screen flex justify-center items-center">
+              <span className="loader"></span>
+            </div>
+          }
+        >
+          <Navbar />
+          <Competition />
           <Footer />
         </Suspense>
       ),
